@@ -45,6 +45,10 @@ async function getApiDocs(baseUrl: string, dist: string) {
 async function patchModels(dist: string) {
     for await (const file of walk(dist)) {
         await removeTsLintDisable(file);
+
+        if (file.endsWith('TokenizedUserDto.ts')) {
+            await fixTokenizedUserDtoFacultativeFields(file);
+        }
     }
 }
 
@@ -64,6 +68,14 @@ async function removeTsLintDisable(filePath: string) {
     const content = (await readFile(filePath, 'utf-8'))
         .replace('// tslint:disable\n', '')
         .replace('// tslint:disable', '');
+
+    await writeFile(filePath, content);
+}
+
+async function fixTokenizedUserDtoFacultativeFields(filePath: string) {
+    if (!filePath.endsWith('TokenizedUserDto.ts')) return;
+
+    const content = (await readFile(filePath, 'utf-8')).replaceAll('?:', ':').replaceAll('? :', ':');
 
     await writeFile(filePath, content);
 }

@@ -1,8 +1,4 @@
-export interface Environment {
-    apiURL: string;
-    webUrl: string;
-    isProduction: boolean;
-}
+import { Environment } from './environment.types';
 
 export const environment: Environment = {
     // TODO: To be defined for production

@@ -10,7 +10,7 @@
     "format": "prettier --write .",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "postinstall": "ts-node ./scripts/gen-models.ts"
+    "gen:models": "ts-node ./scripts/gen-models.ts"
   },
   "dependencies": {
     "@angular/animations": "^18.0.0",
@@ -31,6 +31,7 @@
     "@angular-eslint/builder": "^18.0.7",
     "@angular/cli": "^18.0.7",
     "@angular/compiler-cli": "^18.0.0",
+    "@openapitools/openapi-generator-cli": "^2.13.4",
     "@types/jasmine": "~5.1.4",
     "@types/node": "^20.14.11",
     "@typescript-eslint/utils": "^7.11.0",

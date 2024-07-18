@@ -32,9 +32,12 @@ async function getBaseUrl() {
 }
 
 async function getApiDocs(baseUrl: string, dist: string) {
-    execSync(`npx openapi-generator-cli generate -i ${baseUrl}${URL_PATH} -g typescript-rxjs -o ${dist}`, {
-        stdio: 'inherit',
-    });
+    execSync(
+        `npx @openapitools/openapi-generator-cli generate -i ${baseUrl}${URL_PATH} -g typescript-rxjs -o ${dist}`,
+        {
+            stdio: 'inherit',
+        },
+    );
 
     return dist;
 }

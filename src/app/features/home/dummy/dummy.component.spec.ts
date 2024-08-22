@@ -1,7 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { User } from '../../../core/models';
 import { AuthService } from '../../../core/services/auth.service';
 import { DummyComponent } from './dummy.component';
@@ -18,16 +17,16 @@ describe('DummyComponent', () => {
             providers: [provideHttpClient(), provideHttpClientTesting()],
         }).compileComponents();
 
-        authService = TestBed.inject(AuthService);
-
         fixture = TestBed.createComponent(DummyComponent);
         component = fixture.componentInstance;
+
+        authService = TestBed.inject(AuthService);
+        spyOn(authService, 'getUser').and.returnValue({ username: 'test' } as User);
+
         fixture.detectChanges();
     });
 
     it('should create', () => {
-        spyOn(authService, 'getUser').and.returnValue({ username: 'test' } as User);
-
         expect(component).toBeTruthy();
     });
 });

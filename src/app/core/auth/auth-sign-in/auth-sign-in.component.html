@@ -1,12 +1,12 @@
 <ng-container>
-    <div class="wrapper">
+    <div class="auth-wrapper">
         <div class="auth-container sign-in">
             <h1>Sign in to your account</h1>
             <h2>Or <a routerLink="/auth/sign-up">sign up for a new account</a></h2>
 
             <form [formGroup]="signInForm" (submit)="onSubmit()">
                 <div class="form-group">
-                    <label for="username">Username</label>
+                    <label for="username">Username or email</label>
                     <input type="text" id="username" formControlName="username" />
                     <app-form-error [formErrors]="formErrors" controlName="username" />
                 </div>

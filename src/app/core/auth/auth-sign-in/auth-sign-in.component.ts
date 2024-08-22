@@ -37,6 +37,7 @@ export class AuthSignInComponent {
         const { username, password, remember } = this.signInForm.value;
 
         this.authService.login({ username: username!, password: password!, remember: remember! }).subscribe({
+            next: (user) => this.errorService.toastInfo(`Welcome back, ${user.username}!`),
             error: (err) => this.errorService.handleHttpError(err),
         });
     }

@@ -31,6 +31,11 @@ export interface User {
      * @type {string}
      * @memberof User
      */
+    email?: string;
+    /**
+     * @type {string}
+     * @memberof User
+     */
     password?: string;
     /**
      * @type {string}
@@ -71,12 +76,12 @@ export interface User {
      * @type {boolean}
      * @memberof User
      */
-    credentialsNonExpired?: boolean;
+    accountNonExpired?: boolean;
     /**
      * @type {boolean}
      * @memberof User
      */
-    accountNonExpired?: boolean;
+    credentialsNonExpired?: boolean;
 }
 
 /**

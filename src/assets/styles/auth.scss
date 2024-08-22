@@ -1,0 +1,44 @@
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    .auth-container {
+        padding: 4px 12px;
+
+        h1,
+        h2 {
+            margin: 0;
+
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 1.5rem;
+
+            font-size: 1.875rem;
+        }
+
+        h2 {
+            margin-top: 0.5rem;
+
+            color: var(--theme-main-500);
+
+            font-size: 0.875rem;
+            line-height: 1.25rem;
+            font-weight: 500;
+
+            a {
+                color: var(--theme-main-950);
+
+                text-decoration: none;
+
+                &:hover,
+                &:active {
+                    color: var(--theme-main-200);
+                }
+            }
+        }
+    }
+}

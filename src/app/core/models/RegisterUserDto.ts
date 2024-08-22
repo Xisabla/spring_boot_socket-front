@@ -24,5 +24,10 @@ export interface RegisterUserDto {
      * @type {string}
      * @memberof RegisterUserDto
      */
+    email: string;
+    /**
+     * @type {string}
+     * @memberof RegisterUserDto
+     */
     password: string;
 }

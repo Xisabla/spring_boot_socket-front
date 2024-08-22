@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { IndividualConfig, ToastrService } from 'ngx-toastr';
 
 //
 // Constants
@@ -29,6 +30,32 @@ export interface FormErrorMessage {
 })
 export class ErrorsService<T extends string = string> {
     //
+    // Toasts
+    //
+
+    private toast = inject(ToastrService);
+
+    public toastSuccess(message: string, title?: string, config?: Partial<IndividualConfig>): void {
+        this.toast.success(message, title, config);
+    }
+
+    public toastError(message: string, title?: string, config?: Partial<IndividualConfig>): void {
+        this.toast.error(message, title, config);
+    }
+
+    public toastWarning(message: string, title?: string, config?: Partial<IndividualConfig>): void {
+        this.toast.warning(message, title, config);
+    }
+
+    public toastInfo(message: string, title?: string, config?: Partial<IndividualConfig>): void {
+        this.toast.info(message, title, config);
+    }
+
+    public toastClear(): void {
+        this.toast.clear();
+    }
+
+    //
     // HTTP Errors
     //
 
@@ -43,10 +70,17 @@ export class ErrorsService<T extends string = string> {
     };
 
     public handleHttpError(error: HttpErrorResponse): void {
+        console.error('HTTP error', error);
+
+        if (error.error) {
+            this.toast.error(error.error.message);
+
+            return;
+        }
+
         const message = this.httpErrorMessages[error.status] ?? 'Unknown error';
 
-        console.error(error);
-        console.error(message);
+        this.toast.error(message);
     }
 
     //
@@ -56,6 +90,8 @@ export class ErrorsService<T extends string = string> {
     private readonly formErrorMessages: FormErrorMessage[] = [
         // Control specific
         { control: 'username', error: 'required', message: 'Username is required.' },
+        { control: 'username', error: 'usernameUnavailable', message: 'Username is already taken.' },
+        { control: 'email', error: 'emailUnavailable', message: 'An account with this email already exists.' },
         { control: 'password', error: 'required', message: 'Password is required.' },
         {
             control: 'password',
@@ -68,6 +104,7 @@ export class ErrorsService<T extends string = string> {
             message:
                 'Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character.',
         },
+        { control: 'passwordConfirm', error: 'passwordMismatch', message: 'Passwords do not match.' },
 
         // Generic
         { error: 'required', message: 'This field is required.' },

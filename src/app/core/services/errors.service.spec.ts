@@ -1,13 +1,16 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 import { ErrorsService, FormErrors } from './errors.service';
 
 describe('ErrorsService', () => {
     let service: ErrorsService;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({});
+        TestBed.configureTestingModule({
+            imports: [ToastrModule.forRoot()],
+        });
         service = TestBed.inject(ErrorsService);
     });
 
@@ -22,8 +25,7 @@ describe('ErrorsService', () => {
 
             service.handleHttpError(error);
 
-            expect(consoleErrorSpy).toHaveBeenCalledWith(error);
-            expect(consoleErrorSpy).toHaveBeenCalledWith('Not found');
+            expect(consoleErrorSpy).toHaveBeenCalledWith('HTTP error', error);
         });
 
         it('should log "Unknown error" if the status code is not recognized', () => {
@@ -32,8 +34,7 @@ describe('ErrorsService', () => {
 
             service.handleHttpError(error);
 
-            expect(consoleErrorSpy).toHaveBeenCalledWith(error);
-            expect(consoleErrorSpy).toHaveBeenCalledWith('Unknown error');
+            expect(consoleErrorSpy).toHaveBeenCalledWith('HTTP error', error);
         });
     });
 

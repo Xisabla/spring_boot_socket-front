@@ -45,6 +45,7 @@ describe('AuthService', () => {
     it('should register a user', () => {
         const registerPayload: RegisterUserDto = {
             username: 'test',
+            email: 'test@test.test',
             password: 'password',
         };
 

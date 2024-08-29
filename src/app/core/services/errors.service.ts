@@ -4,12 +4,6 @@ import { FormGroup } from '@angular/forms';
 import { IndividualConfig, ToastrService } from 'ngx-toastr';
 
 //
-// Constants
-//
-
-export const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[/!@#$%^&*()\-_+.]).+$/;
-
-//
 // Types
 //
 
@@ -90,8 +84,8 @@ export class ErrorsService<T extends string = string> {
     private readonly formErrorMessages: FormErrorMessage[] = [
         // Control specific
         { control: 'username', error: 'required', message: 'Username is required.' },
-        { control: 'username', error: 'usernameUnavailable', message: 'Username is already taken.' },
-        { control: 'email', error: 'emailUnavailable', message: 'An account with this email already exists.' },
+        { control: 'username', error: 'unavailable', message: 'Username is already taken.' },
+        { control: 'email', error: 'unavailable', message: 'An account with this email already exists.' },
         { control: 'password', error: 'required', message: 'Password is required.' },
         {
             control: 'password',
@@ -104,7 +98,7 @@ export class ErrorsService<T extends string = string> {
             message:
                 'Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character.',
         },
-        { control: 'passwordConfirm', error: 'passwordMismatch', message: 'Passwords do not match.' },
+        { control: 'passwordConfirm', error: 'mismatch', message: 'Passwords does not match.' },
 
         // Generic
         { error: 'required', message: 'This field is required.' },

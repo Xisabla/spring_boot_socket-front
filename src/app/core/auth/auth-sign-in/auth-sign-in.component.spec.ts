@@ -2,6 +2,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { FormErrorComponent } from '../../../shared/components/form-error/form-error.component';
 import { User } from '../../models';
@@ -15,7 +16,7 @@ describe('AuthSignInComponent', () => {
         await TestBed.configureTestingModule({
             declarations: [AuthSignInComponent],
             providers: [provideHttpClient(), provideHttpClientTesting()],
-            imports: [FormErrorComponent, ReactiveFormsModule],
+            imports: [FormErrorComponent, ReactiveFormsModule, ToastrModule.forRoot()],
         }).compileComponents();
 
         fixture = TestBed.createComponent(AuthSignInComponent);

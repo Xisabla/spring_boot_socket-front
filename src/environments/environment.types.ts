@@ -7,6 +7,10 @@ export interface Environment {
      */
     apiURL: string;
     /**
+     * URL of the web socket
+     */
+    wsURL: string;
+    /**
      * URL of the frontend (current application)
      */
     webUrl: string;

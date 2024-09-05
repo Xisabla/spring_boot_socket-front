@@ -37,11 +37,11 @@ export const PASSWORD = [
 // Methods
 //
 
-export function available<T = string>(getter: () => Observable<T[]>): AsyncValidatorFn {
+export function available<T = string>(getter: () => Observable<T[] | null>): AsyncValidatorFn {
     return function (control: AbstractControl): Observable<ValidationErrors | null> {
         return getter().pipe(
             map((taken) => {
-                if (taken.includes(control.value)) {
+                if (taken?.includes(control.value)) {
                     return { unavailable: true };
                 }
 

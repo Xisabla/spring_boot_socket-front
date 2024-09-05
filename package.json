@@ -21,9 +21,11 @@
     "@angular/platform-browser": "^18.0.0",
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
+    "@stomp/rx-stomp": "^2.0.0",
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "ws": "^8.18.0",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {
@@ -33,6 +35,7 @@
     "@angular/cli": "^18.0.7",
     "@angular/compiler-cli": "^18.0.0",
     "@openapitools/openapi-generator-cli": "^2.13.4",
+    "@stomp/stompjs": "^7.0.0",
     "@types/jasmine": "~5.1.4",
     "@types/node": "^20.14.11",
     "@typescript-eslint/utils": "^7.11.0",
@@ -50,5 +53,6 @@
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.16.1"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
